@@ -1,7 +1,7 @@
 name: CI Github Action
 on:
   push:
-    branches: [ CI/CD ]
+    branches: [ master ]
 
 jobs:
   build-react:
