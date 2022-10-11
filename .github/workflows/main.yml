@@ -44,10 +44,8 @@ jobs:
       - name: Run test 
         run: npm run build
       - name: run deploy
-        uses: appleboy/ssh-action@master
-        run: rsync ~/build/* ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/web
-        with:
-          key: ${{ secrets.KEY }}
+        run: rsync -e "ssh -i ${{ secrets.KEY }}" ~/build/* ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/web
+
 
 
 
