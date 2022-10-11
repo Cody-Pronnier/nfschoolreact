@@ -51,7 +51,7 @@ jobs:
       - name: ajout Known Hosts
         run: ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
       - name: création dossier build
-        run: ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} mkdir ./web/build
+        run: ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} mkdir -p ./web/build
       - name: run deploy
         run: rsync -avz ./build/ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/web/build
       - name: renom dossier build
