@@ -43,8 +43,10 @@ jobs:
         run: npm install
       - name: Run test 
         run: npm run build
+      - name: private key
+        run: echo ${{ secrets.KEY }} >> ~/.ssh/file
       - name: run deploy
-        run: rsync -e "ssh -i ${{ secrets.KEY }}" ~/build/* ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/web
+        run:  rsync -e "ssh -i ~/.ssh/file" ~/build/* ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/web
 
 
 
