@@ -55,7 +55,7 @@ jobs:
       - name: run deploy
         run: rsync -avz ./build/ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/web/build
       - name: renom dossier build
-        run: ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} mv ~/web/build ~/web/build$(date +%Y%m%d_%H%M%S)
+        run: ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} mv /web/build /web/build$(date +%Y%m%d_%H%M%S)
 
 
 
