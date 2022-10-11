@@ -46,6 +46,7 @@ jobs:
       - name: Run test 
         run: npm run build
       - name: run deploy
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
