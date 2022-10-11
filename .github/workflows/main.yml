@@ -54,6 +54,7 @@ jobs:
           script: |
             mkdir web
           path: ./web/
+          copy: build 
 
 
 
