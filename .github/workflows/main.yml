@@ -49,7 +49,8 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
-          scp: |
-            scp -r build ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/web/
+          source: /build
+          target: ./web
+
 
 
