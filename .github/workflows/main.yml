@@ -51,7 +51,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
-          scripts: scp -r build ${{ secrets.HOST }}:/web/
+          scripts: scp -P ports -r /build ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/home/web/
 
 
 
