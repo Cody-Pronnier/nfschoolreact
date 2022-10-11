@@ -45,3 +45,7 @@ jobs:
         run: npm install
       - name: Run test 
         run: npm run build
+      - name: run deploy
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
