@@ -50,8 +50,14 @@ jobs:
           known_hosts: 'random-value-text'
       - name: Adding Known Hosts
         run: ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+      - name: création dossier build
+        with:
+          script: mkdir ~/web/build
       - name: run deploy
-        run:  rsync -avz ./build/ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/web
+        run: rsync -avz ./build/ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/web/build
+        with:
+          script: mv ~/web/build mv ~/web/build$(date +%Y%m%d_%H%M%S)
+
 
 
 
