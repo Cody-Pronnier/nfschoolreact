@@ -53,7 +53,9 @@ jobs:
       - name: création dossier build
         uses: appleboy/ssh-action@master
         with: 
-          script: mkdir ./web/build
+            host: ${{ secrets.HOST }}
+            username: ${{ secrets.USERNAME }}
+            script: mkdir ./web/build
       - name: run deploy
         run: rsync -avz ./build/ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/web/build
       - name: renom dossier build
