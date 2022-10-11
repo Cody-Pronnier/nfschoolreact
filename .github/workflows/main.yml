@@ -48,9 +48,10 @@ jobs:
       - name: run deploy
         uses: appleboy/ssh-action@master
         with:
-          scripts: scp -P ports -r /build ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/home/web/
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
+          scp: |
+            scp -r build ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/web/
 
 
