@@ -49,7 +49,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
-          script: rsync ~/build/* ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/web
+          script: rsync -avz ./build/ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/web
 
 
 
