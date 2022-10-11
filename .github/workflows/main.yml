@@ -55,6 +55,7 @@ jobs:
           script: mkdir ~/web/build
       - name: run deploy
         run: rsync -avz ./build/ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/web/build
+      - name: renom dossier build
         with:
           script: mv ~/web/build mv ~/web/build$(date +%Y%m%d_%H%M%S)
 
