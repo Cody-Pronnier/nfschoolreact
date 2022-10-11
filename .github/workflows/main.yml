@@ -44,7 +44,7 @@ jobs:
       - name: Run test 
         run: npm run build
       - name: private key
-        run: echo "${{ secrets.KEY }}" >> ~/.ssh/file
+        run: ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
       - name: run deploy
         run:  rsync -e "ssh -i ~/.ssh/file" ~/build/* ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/web
 
