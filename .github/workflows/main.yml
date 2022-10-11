@@ -51,15 +51,11 @@ jobs:
       - name: ajout Known Hosts
         run: ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
       - name: création dossier build
-        uses: appleboy/ssh-action@master
-        with: 
-            host: ${{ secrets.HOST }}
-            username: ${{ secrets.USERNAME }}
-            script: mkdir ./web/build
+        run: ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} mkdir ./web/build
       - name: run deploy
         run: rsync -avz ./build/ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/web/build
       - name: renom dossier build
-        run: mv ~/web/build mv ~/web/build$(date +%Y%m%d_%H%M%S)
+        run: ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} mv ~/web/build mv ~/web/build$(date +%Y%m%d_%H%M%S)
 
 
 
