@@ -46,6 +46,8 @@ jobs:
       - name: run deploy
         uses: appleboy/ssh-action@master
         with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           script: rsync ~/build/* ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/web
 
