@@ -43,10 +43,15 @@ jobs:
         run: npm install
       - name: Run test 
         run: npm run build
+      - name: Installation de la clé ssh
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.KEY }}
+          known_hosts: 'random-value-text'
       - name: private key
         run: ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
       - name: run deploy
-        run:  rsync -e "ssh -i ~/.ssh/file" ~/build/* ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/web
+        run:  rsync -avz ~/build/* ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/web
 
 
 
